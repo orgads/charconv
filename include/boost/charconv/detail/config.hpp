@@ -74,7 +74,11 @@
 #    define BOOST_CHARCONV_HAS_MSVC_32BIT_INTRINSICS
 #  endif
 #elif (defined(__x86_64__) || defined(__i386__))
-#  include <x86intrin.h>
+#  if defined(BOOST_WINDOWS)
+#    include <intrin.h>
+#  else
+#    include <x86intrin.h>
+#  endif
 #  define BOOST_CHARCONV_HAS_X86_INTRINSICS
 #elif defined(__ARM_NEON__)
 #  include <arm_neon.h>
